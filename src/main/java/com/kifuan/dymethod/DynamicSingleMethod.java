@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 final class DynamicSingleMethod implements DynamicMethod {
-    private final Method method;
+    private final ReflectionMethod method;
     private final Object object;
 
     private static final Map<Class<?>, Class<?>> primitives = Map.of(
@@ -20,11 +20,11 @@ final class DynamicSingleMethod implements DynamicMethod {
             void.class, Void.class
     );
 
-    DynamicSingleMethod(Method method, Object object) {
+    DynamicSingleMethod(ReflectionMethod method, Object object) {
         this.method = method;
         this.object = object;
 
-        if (!Modifier.isStatic(method.getModifiers()) && object == null) {
+        if (!Modifier.isStatic(method.getModifiers()) && object == null && !method.isConstructor()) {
             throw new IllegalStateException("given method " + method + " is not static but there is no instance provided");
         }
     }
@@ -53,7 +53,7 @@ final class DynamicSingleMethod implements DynamicMethod {
      * @param src the source class
      * @return the distance between target and src
      */
-    private static int getDistance(Class<?> target, Class<?> src) {
+    static int getDistance(Class<?> target, Class<?> src) {
         // Make sure there is no primitive classes(those who have no super classes)
         src = getBoxed(src);
         target = getBoxed(target);
@@ -112,12 +112,12 @@ final class DynamicSingleMethod implements DynamicMethod {
         }
     }
 
-    Method getMethod() {
+    ReflectionMethod getMethod() {
         return method;
     }
 
     @Override
-    public Method getMostClosed(Class<?>... classes) {
+    public ReflectionMethod getMostClosed(Class<?>... classes) {
         return method;
     }
 

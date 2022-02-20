@@ -37,7 +37,7 @@ final class DynamicOverloadedMethods implements DynamicMethod {
     }
 
     @Override
-    public Method getMostClosed(Class<?>... classes) {
+    public ReflectionMethod getMostClosed(Class<?>... classes) {
         Optional<DynamicSingleMethod> m = getMostClosedSingleMethod(classes);
         if (m.isEmpty()) {
             return null;

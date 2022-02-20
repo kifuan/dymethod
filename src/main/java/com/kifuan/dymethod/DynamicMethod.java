@@ -1,6 +1,5 @@
 package com.kifuan.dymethod;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +19,7 @@ public interface DynamicMethod {
      * @param classes the classes of arguments
      * @return the most closed method or null if there is not yet
      */
-    Method getMostClosed(Class<?>... classes);
+    ReflectionMethod getMostClosed(Class<?>... classes);
 
     /**
      * Gets whether given argument classes have a compatible method.
@@ -41,7 +40,7 @@ public interface DynamicMethod {
      * @param name the name of the static method
      * @return the static method
      */
-    static DynamicMethod getInstance(Class<?> cls, String name) {
+    static DynamicMethod getStaticMethods(Class<?> cls, String name) {
         return getInstance(cls, null, name);
     }
 
@@ -52,14 +51,33 @@ public interface DynamicMethod {
      * @param name the name of the instance method
      * @return the instance method
      */
-    static DynamicMethod getInstance(Object obj, String name) {
+    static DynamicMethod getInstanceMethods(Object obj, String name) {
         return getInstance(obj.getClass(), obj, name);
+    }
+
+    /**
+     * Get constructors.
+     *
+     * @param cls the class to get constructors.
+     * @return the constructors.
+     */
+    static DynamicMethod getConstructors(Class<?> cls) {
+        List<DynamicSingleMethod> constructors = Arrays.stream(cls.getConstructors())
+                .map(c -> new DynamicSingleMethod(ReflectionMethod.getInstance(c), null))
+                .collect(Collectors.toList());
+
+        // Anyway, there will be 1 constructors at least.
+        if (constructors.size() == 1) {
+            return constructors.get(0);
+        } else {
+            return new DynamicOverloadedMethods(constructors);
+        }
     }
 
     private static DynamicMethod getInstance(Class<?> cls, Object obj, String name) {
         List<DynamicSingleMethod> methods = Arrays.stream(cls.getMethods())
                 .filter(m -> m.getName().equals(name))
-                .map(m -> new DynamicSingleMethod(m, obj))
+                .map(m -> new DynamicSingleMethod(ReflectionMethod.getInstance(m), obj))
                 .collect(Collectors.toList());
 
         if (methods.isEmpty()) {
