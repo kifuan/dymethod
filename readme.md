@@ -14,7 +14,7 @@ Add this to pom.xml under `<dependencies>` tag.
 <dependency>
     <groupId>io.github.kifuan</groupId>
     <artifactId>dymethod</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 </dependency>
 ```
 
