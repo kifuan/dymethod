@@ -14,6 +14,10 @@ public interface ReflectionMethod {
 
     boolean isConstructor();
 
+    Method getMethod();
+
+    Constructor<?> getConstructor();
+
     static ReflectionMethod getInstance(Method method) {
         return new ReflectionMethod() {
             @Override
@@ -43,6 +47,16 @@ public interface ReflectionMethod {
             @Override
             public boolean isConstructor() {
                 return false;
+            }
+
+            @Override
+            public Method getMethod() {
+                return method;
+            }
+
+            @Override
+            public Constructor<?> getConstructor() {
+                return null;
             }
         };
     }
@@ -76,6 +90,16 @@ public interface ReflectionMethod {
             @Override
             public boolean isConstructor() {
                 return true;
+            }
+
+            @Override
+            public Method getMethod() {
+                return null;
+            }
+
+            @Override
+            public Constructor<?> getConstructor() {
+                return ctor;
             }
         };
     }
