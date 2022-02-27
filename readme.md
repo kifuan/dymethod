@@ -12,9 +12,9 @@ Add this to pom.xml under `<dependencies>` tag.
 
 ```xml
 <dependency>
-  <groupId>com.kifuan</groupId>
-  <artifactId>dymethod</artifactId>
-  <version>1.1.0</version>
+    <groupId>io.github.kifuan</groupId>
+    <artifactId>dymethod</artifactId>
+    <version>1.2.0</version>
 </dependency>
 ```
 
