@@ -22,10 +22,11 @@
         </dependency>
     </dependencies>
 
+
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>dymethod</name>
+            <name>GitHub kifuan Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/kifuan/dymethod</url>
         </repository>
     </distributionManagement>
