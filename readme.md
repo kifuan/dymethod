@@ -1,5 +1,11 @@
 # Dynamic Method-Calling for Java
 
+## Introduction
+
+This is library for **calling methods with name only**.(Inspired by `nashorn`, which is a JS engine in Java, and it can call Java methods dynamically including overloaded methods)
+
+Though there must be an implementation, I want to make one which is easier to use and understand the principles.
+
 ## Usage
 
 Add this to pom.xml under `<dependencies>` tag.
@@ -11,12 +17,6 @@ Add this to pom.xml under `<dependencies>` tag.
   <version>1.1.0</version>
 </dependency>
 ```
-
-## Introduction
-
-This is library for **calling methods with name only**.(Inspired by `nashorn`, which is a JS engine in Java, and it can call Java methods dynamically including overloaded methods)
-
-Though there must be an implementation, I want to make one which is easier to use and understand the principles.
 
 ## Examples
 
