@@ -1,5 +1,17 @@
 # Dynamic Method-Calling for Java
 
+## Usage
+
+Add this to pom.xml under `<dependencies>` tag.
+
+```xml
+<dependency>
+  <groupId>com.kifuan</groupId>
+  <artifactId>dymethod</artifactId>
+  <version>1.1.0</version>
+</dependency>
+```
+
 ## Introduction
 
 This is library for **calling methods with name only**.(Inspired by `nashorn`, which is a JS engine in Java, and it can call Java methods dynamically including overloaded methods)
