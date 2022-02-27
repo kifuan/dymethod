@@ -1,4 +1,4 @@
-package com.kifuan.dymethod;
+package io.github.kifuan.dymethod;
 
 import java.util.Arrays;
 import java.util.List;

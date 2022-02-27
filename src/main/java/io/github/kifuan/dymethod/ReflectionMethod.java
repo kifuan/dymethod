@@ -1,9 +1,7 @@
-package com.kifuan.dymethod;
+package io.github.kifuan.dymethod;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 
 public interface ReflectionMethod {
     void setAccessible(boolean flag);

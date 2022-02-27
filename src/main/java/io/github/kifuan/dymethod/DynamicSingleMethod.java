@@ -1,6 +1,5 @@
-package com.kifuan.dymethod;
+package io.github.kifuan.dymethod;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.kifuan.dymethod;
+package io.github.kifuan.dymethod;
 
 import org.junit.Assert;
 import org.junit.Test;
